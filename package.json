@@ -13,7 +13,7 @@
     "patch-release": "npm run build && npm version patch && npm run git-commit && npm run git-push && npm publish"
   },
   "bin": {
-
+    "lb-migration": "dist/bin/index.js"
   },
   "dependencies": {
     "babel-runtime": "^6.22.0",
