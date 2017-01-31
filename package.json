@@ -1,0 +1,35 @@
+{
+  "name": "loopback-migration-tool",
+  "version": "0.0.1",
+  "description": "A Loopback.io tool for easy handly db migrations and seeders",
+  "main": "dist/index.js",
+  "repository": "git@github.com:garusis/loopback-migration-tool.git",
+  "author": "Marcos J. Alvarez <garusis@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "gulp build",
+    "git-commit": "git add -A . && git commit --amend --no-edit",
+    "git-push": "git push origin master --force && git push --follow-tags",
+    "patch-release": "npm run build && npm version patch && npm run git-commit && npm run git-push && npm publish"
+  },
+  "bin": {
+
+  },
+  "dependencies": {
+    "babel-runtime": "^6.22.0",
+    "lodash": "^4.17.4",
+    "loopback": "^3.2.1"
+  },
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-cli": "^6.22.2",
+    "babel-plugin-transform-runtime": "^6.22.0",
+    "del": "^2.2.2",
+    "eslint": "^3.14.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-sourcemaps": "^2.4.0",
+    "merge-stream": "^1.0.1",
+    "run-sequence": "^1.2.2"
+  }
+}

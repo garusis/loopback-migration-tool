@@ -1,0 +1,1 @@
+{"version":3,"sources":["bin/index.js"],"names":["console","log"],"mappings":";;AAEA;;;AAGAA,QAAQC,GAAR,CAAY,oBAAZ","file":"index.js","sourcesContent":["\n\n/**\n * Created by garusis on 31/01/17.\n */\nconsole.log(\"console.log output\")\n"],"sourceRoot":"../"}
