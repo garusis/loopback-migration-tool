@@ -14,6 +14,10 @@ or install with NPM
 ```
 npm i loopback-migration-tool --save-dev
 ```
+In your project root.
+```
+node_modules/.bin/lb-migration migrate 
+```
 
 ## Settings
 
