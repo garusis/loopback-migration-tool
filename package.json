@@ -8,10 +8,9 @@
   "license": "MIT",
   "scripts": {
     "build": "gulp build",
-    "devrun": "npm run build && lb-migration --help",
-    "preversion": "npm run build",
+    "preversion": "yarn run build",
     "git-push": "git push origin master --force && git push --follow-tags",
-    "patch-release": "npm version patch && npm run git-push && npm publish"
+    "patch-release": "yarn version patch && yarn run git-push && yarn publish"
   },
   "bin": {
     "lb-migration": "dist/bin/index.js"

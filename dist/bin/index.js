@@ -35,9 +35,9 @@ var argv = _yargs2.default.usage("lb-migration <cmd> [args]").command('migrate [
 }, function (argv) {
     console.log('seed', argv);
 }).options({
-    app: {
+    a: {
         demand: false,
-        alias: "loopback-app",
+        alias: ["app", "loopback-app"],
         default: "./server/server.js",
         describe: "Path to your loopback application main file.",
         type: "string"
