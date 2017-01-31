@@ -15,9 +15,29 @@ or install with NPM
 ```
 npm i -g loopback-migration-tool
 ```
-In your project root.
+Migrate all your models on all datasources.
 ```
-lb-migration migrate [options] 
+lb-migration migrate
+```
+Migrate all your models on specific datasources.
+```
+lb-migration migrate --ds=datasource1 datasource2
+```
+Migrate specific models on specific datasources.
+```
+lb-migration migrate --ds=datasource1 datasource2 --model=model1 model2 model3
+```
+Migrate specific models using autoupdate method.
+```
+lb-migration migrate --model=model1 model2 model3 --method=update
+```
+Seed your models with files in `./seeds/*.js`.
+```
+lb-migration seed
+```
+Seed your models with files in multiple locations.
+```
+lb-migration seed --src=path/to/files1/*.js path/to/files2/*.js path/to/files3/*.js  
 ```
 
 ### Install as dev dependency
@@ -35,7 +55,7 @@ In your project root.
 node_modules/.bin/lb-migration migrate [options] 
 ```
 
-## Settings
+## options
 
 ### .lb-migrationrc.*
 
