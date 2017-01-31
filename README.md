@@ -3,9 +3,17 @@
 loopback-migration-tool expose the `lb-migration` script that ables you easy
 handle migrations and seeders for Loopback.io
 
-## Install
+## Usage
 
-## Getting started
+### Install
+Install with Yarn
+```
+yarn add loopback-migration-tool --dev
+```
+or install with NPM
+```
+npm i loopback-migration-tool --save-dev
+```
 
 ## Settings
 
