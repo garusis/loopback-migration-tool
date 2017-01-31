@@ -8,9 +8,9 @@
   "license": "MIT",
   "scripts": {
     "build": "gulp build",
-    "git-commit": "git add -A . && git commit --amend --no-edit",
+    "preversion": "npm run build",
     "git-push": "git push origin master --force && git push --follow-tags",
-    "patch-release": "npm run build && npm version patch && npm run git-commit && npm run git-push && npm publish"
+    "patch-release": "npm version patch && npm run git-push && npm publish"
   },
   "bin": {
     "lb-migration": "dist/bin/index.js"
