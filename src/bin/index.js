@@ -36,9 +36,9 @@ const argv = yargs
         console.log('seed', argv)
     })
     .options({
-        app: {
+        a: {
             demand: false,
-            alias: "loopback-app",
+            alias: ["app", "loopback-app"],
             default: "./server/server.js",
             describe: "Path to your loopback application main file.",
             type: "string"
