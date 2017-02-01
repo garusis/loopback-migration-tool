@@ -9,7 +9,7 @@
   "scripts": {
     "build": "gulp build",
     "preversion": "yarn run build",
-    "git-push": "git push origin master --force && git push --follow-tags",
+    "git-push": "git push origin master && git push --follow-tags",
     "patch-release": "npm version patch && npm publish && yarn run git-push"
   },
   "bin": {

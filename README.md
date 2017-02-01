@@ -57,6 +57,12 @@ node_modules/.bin/lb-migration migrate [options]
 
 ## options
 
+### Global options
+
+| Property 	|                  Description                  	|  Type  	| Values 	|        Default       	|           As argument                                         |
+|:--------:	|:---------------------------------------------:	|:------:	|:------:	|:--------------------:	|:------------------------------------------------------------:	|
+|    app   	| Path to your loopback application</br>main file. 	| String 	|        	| *./server/server.js* 	| --a=*value* </br> --app=*value* </br> --loopback-app=*value* 	|
+
 ### .lb-migrationrc.*
 
 You can use a `.lb-migrationrc.json` or `.lb-migrationrc.js` to save your common migration settings.
