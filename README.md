@@ -57,16 +57,23 @@ node_modules/.bin/lb-migration migrate [options]
 
 ## options
 
-### Global options
-
-| Property 	|                  Description                  	|  Type  	| Values 	|        Default       	|           As argument                                         |
-|:--------:	|:---------------------------------------------:	|:------:	|:------:	|:--------------------:	|:------------------------------------------------------------:	|
-|    app   	| Path to your loopback application</br>main file. 	| String 	|        	| *./server/server.js* 	| --a=*value* </br> --app=*value* </br> --loopback-app=*value* 	|
-
 ### .lb-migrationrc.*
 
 You can use a `.lb-migrationrc.json` or `.lb-migrationrc.js` to save your common migration settings.
 
+### Global options
+
+| Property 	|                  Description                  	|  Type  	| Values 	|        Default       	|           As argument                                         |
+|:--------:	|:---------------------------------------------:	|:------:	|:------:	|:--------------------:	|:------------------------------------------------------------:	|
+|    app   	| Path to your loopback application</br>main file. 	| String 	|        	| *./server/server.js* 	| -a=*value* </br> --app=*value* </br> --loopback-app=*value* 	|
+
+### migrate
+
+| Property 	|                                                                                                       Description                                                                                                                     	|       Type       	|     Values     	| Default 	|               As argument     	|
+|:--------:	|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:	|:----------------:	|:--------------:	|:-------:	|:-----------------------------:	|
+|    ds    	|Datasources that will be migrated.</br>If empty or not present, all datasources will be migrates.                                                                                                                          	            | String, [String] 	|                	|    []   	| -d </br> --ds </br> --datasource 	|
+|   model  	|Models in the selected datasources</br>that will be migrated. If empty or not present,</br>all models in all selected datasources will</br>be migrates. Selected Models not presents in</br>selected datasources will be not migrated. 	|     [String]     	|                	|    []   	|        --mod </br> --model    	|
+|  method  	|Loopback migration method to use.</br>Loopback uses automigrate and autoupdate methods</br>for migrations.                                                                                                                     	        |      String      	| update migrate 	| migrate 	|           -m </br> --method     	|
 
 
 
