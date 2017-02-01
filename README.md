@@ -69,6 +69,13 @@ You can use a `.lb-migrationrc.json` or `.lb-migrationrc.js` to save your common
 
 ### migrate
 
+**Important:** Loopback's datasources uses two methods to migrate your models. 
+
+- **Auto-migration:** Drop existing schema objects if they exist, and re-create them based on model definitions. Existing data will be lost.
+- **Auto-update:** Detect the difference between schema objects and model definitions, and alter the database schema objects. Keep existing data.
+ 
+ **Be careful what method must you use.**
+
 | Property 	|                                                                                                       Description                                                                                                                     	|       Type       	|     Values     	| Default 	|               As argument     	|
 |:--------:	|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:	|:----------------:	|:--------------:	|:-------:	|:-----------------------------:	|
 |    ds    	|Datasources that will be migrated.</br>If empty or not present, all datasources will be migrates.                                                                                                                          	            | String, [String] 	|                	|    []   	| -d </br> --ds </br> --datasource 	|
@@ -76,4 +83,7 @@ You can use a `.lb-migrationrc.json` or `.lb-migrationrc.js` to save your common
 |  method  	|Loopback migration method to use.</br>Loopback uses automigrate and autoupdate methods</br>for migrations.                                                                                                                     	        |      String      	| update migrate 	| migrate 	|           -m </br> --method     	|
 
 
+### migrate
+
+**Important:** `seed` command will destroy all existing data in selected models before start to seed them.  
 
