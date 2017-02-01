@@ -1,6 +1,6 @@
 {
   "name": "loopback-migration-tool",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "A Loopback.io tool for easy handly db migrations and seeders",
   "main": "dist/bin/index.js",
   "repository": "git@github.com:garusis/loopback-migration-tool.git",
@@ -11,9 +11,9 @@
     "preversion": "yarn run build",
     "git-push": "git push origin master && git push --follow-tags",
     "release": "npm publish && yarn run git-push",
-    "patch-release": "npm version patch && yarn run release",
-    "minor-release": "npm version minor && yarn run release",
-    "major-release": "npm version major && yarn run release"
+    "patch-release": "npm version patch && npm run release",
+    "minor-release": "npm version minor && npm run release",
+    "major-release": "npm version major && npm run release"
   },
   "bin": {
     "lb-migration": "dist/bin/index.js"
