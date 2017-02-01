@@ -1,6 +1,6 @@
 {
   "name": "loopback-migration-tool",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "A Loopback.io tool for easy handly db migrations and seeders",
   "main": "dist/bin/index.js",
   "repository": "git@github.com:garusis/loopback-migration-tool.git",
