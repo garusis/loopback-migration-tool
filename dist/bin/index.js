@@ -25,9 +25,9 @@ var argv = _yargs2.default.usage("lb-migration <cmd> [args]").command('migrate [
     m: {
         demand: false,
         alias: "method",
-        default: "update",
+        default: "migrate",
         choices: ["update", "migrate"],
-        describe: "Models in the selected datasources that will be migrated. If empty or not present, all models in all selected datasources will be migrates. Selected Models not presents in selected datasources will be not migrated.",
+        describe: "Loopback migration method to use. Loopback uses automigrate and autoupdate methods for migrations.",
         type: "string"
     }
 }, function (argv) {

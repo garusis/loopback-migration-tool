@@ -7,10 +7,13 @@
   "author": "Marcos J. Alvarez <garusis@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "gulp build",
+    "build": "gulp build && git commit --amend --no-edit",
     "preversion": "yarn run build",
     "git-push": "git push origin master && git push --follow-tags",
-    "patch-release": "npm version patch && npm publish && yarn run git-push"
+    "release": "npm publish && yarn run git-push",
+    "patch-release": "npm version patch && yarn run release",
+    "minor-release": "npm version minor && yarn run release",
+    "major-release": "npm version major && yarn run release"
   },
   "bin": {
     "lb-migration": "dist/bin/index.js"
