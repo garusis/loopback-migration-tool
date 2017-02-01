@@ -65,7 +65,7 @@ You can use a `.lb-migrationrc.json` or `.lb-migrationrc.js` to save your common
 
 | Property 	|                  Description                  	|  Type  	| Values 	|        Default       	|           As argument                                         |
 |:--------:	|:---------------------------------------------:	|:------:	|:------:	|:--------------------:	|:------------------------------------------------------------:	|
-|    app   	| Path to your loopback application</br>main file. 	| String 	|        	| *./server/server.js* 	| -a=*value* </br> --app=*value* </br> --loopback-app=*value* 	|
+|    app   	| Path to your loopback application</br>main file. 	| String 	|        	| *./server/server.js* 	| -a </br> --app </br> --loopback-app 	|
 
 ### migrate
 
@@ -76,14 +76,18 @@ You can use a `.lb-migrationrc.json` or `.lb-migrationrc.js` to save your common
  
  **Be careful what method must you use.**
 
-| Property 	|                                                                                                       Description                                                                                                                     	|       Type       	|     Values     	| Default 	|               As argument     	|
-|:--------:	|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:	|:----------------:	|:--------------:	|:-------:	|:-----------------------------:	|
-|    ds    	|Datasources that will be migrated.</br>If empty or not present, all datasources will be migrates.                                                                                                                          	            | String, [String] 	|                	|    []   	| -d </br> --ds </br> --datasource 	|
-|   model  	|Models in the selected datasources</br>that will be migrated. If empty or not present,</br>all models in all selected datasources will</br>be migrates. Selected Models not presents in</br>selected datasources will be not migrated. 	|     [String]     	|                	|    []   	|        --mod </br> --model    	|
-|  method  	|Loopback migration method to use.</br>Loopback uses automigrate and autoupdate methods</br>for migrations.                                                                                                                     	        |      String      	| update migrate 	| migrate 	|           -m </br> --method     	|
+| Property 	|                                                                                                       Description                                                                                                                     	|       Type            	|     Values        	| Default 	|               As argument     	|
+|:--------:	|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:	|:---------------------:	|:-----------------:	|:-------:	|:-----------------------------:	|
+|    ds    	|Datasources that will be migrated.</br>If empty or not present, all datasources will be migrates.                                                                                                                          	            | String, </br> [String] 	|                	    |    []   	| -d </br> --ds </br> --datasource 	|
+|   model  	|Models in the selected datasources</br>that will be migrated. If empty or not present,</br>all models in all selected datasources will</br>be migrates. Selected Models not presents in</br>selected datasources will be not migrated. 	|     [String]          	|                     	|    []   	|        --mod </br> --model    	|
+|  method  	|Loopback migration method to use.</br>Loopback uses automigrate and autoupdate methods</br>for migrations.                                                                                                                     	        |      String      	        | update </br> migrate 	| migrate 	|           -m </br> --method     	|
 
 
-### migrate
+### seed
 
 **Important:** `seed` command will destroy all existing data in selected models before start to seed them.  
+
+| Property 	|            Description            	|       Type       	        | Values 	|      Default     	|     As argument    	            |
+|:--------:	|:---------------------------------:	|:---------------------:	|:------:	|:----------------:	|:-----------------------------:	|
+|    src   	| File globs to your seeders files. 	| String, </br> [String] 	|        	| ["./seeds/*.js"] 	| -s </br> --src </br> --sources 	|
 
