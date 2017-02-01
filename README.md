@@ -57,9 +57,9 @@ node_modules/.bin/lb-migration migrate [options]
 
 ## options
 
-### .lb-migrationrc.*
+### .lb-migrationrc.json
 
-You can use a `.lb-migrationrc.json` or `.lb-migrationrc.js` to save your common migration settings.
+You can use a `.lb-migrationrc.json` to save your common migration settings.
 
 ### Global options
 

@@ -3,6 +3,7 @@
  * Created by garusis on 31/01/17.
  */
 import yargs from "yargs"
+import defaults from "../defaults"
 
 const argv = yargs
     .usage("lb-migration <cmd> [args]")
@@ -10,23 +11,30 @@ const argv = yargs
         d: {
             demand: false,
             alias: ["ds", "datasource"],
-            default: [],
+            default: defaults.ds,
             describe: "Datasources that will be migrated. If empty or not present, all datasources will be migrates.",
             type: "array"
         },
         mod: {
             demand: false,
             alias: "model",
-            default: [],
+            default: defaults.model,
             describe: "Models in the selected datasources that will be migrated. If empty or not present, all models in all selected datasources will be migrates. Selected Models not presents in selected datasources will be not migrated.",
             type: "array"
         },
         m: {
             demand: false,
             alias: "method",
-            default: "migrate",
-            choices:["update", "migrate"],
+            default: defaults.method,
+            choices: ["update", "migrate"],
             describe: "Loopback migration method to use. Loopback uses automigrate and autoupdate methods for migrations.",
+            type: "string"
+        },
+        a: {
+            demand: false,
+            alias: ["app", "loopback-app"],
+            default: defaults.app,
+            describe: "Path to your loopback application main file.",
             type: "string"
         }
     }, function (argv) {
@@ -36,21 +44,19 @@ const argv = yargs
         s: {
             demand: false,
             alias: ["src", "sources"],
-            default: ["./seeds/*.js"],
+            default: defaults.src,
             describe: "File globs to your seeders files.",
             type: "array"
-        }
-    }, function (argv) {
-        console.log('seed', argv)
-    })
-    .options({
+        },
         a: {
             demand: false,
             alias: ["app", "loopback-app"],
-            default: "./server/server.js",
+            default: defaults.app,
             describe: "Path to your loopback application main file.",
             type: "string"
         }
+    }, function (argv) {
+        console.log('seed', argv)
     })
     .help()
     .argv
