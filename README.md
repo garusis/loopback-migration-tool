@@ -91,3 +91,29 @@ You can use a `.lb-migrationrc.json` or `.lb-migrationrc.js` to save your common
 |:--------:	|:---------------------------------:	|:---------------------:	|:------:	|:----------------:	|:-----------------------------:	|
 |    src   	| File globs to your seeders files. 	| String, </br> [String] 	|        	| ["./seeds/*.js"] 	| -s </br> --src </br> --sources 	|
 
+## Seeder file
+
+A seeder file is just a js module that exports a function where you 
+fill your model's data.
+
+The exported function receive a `loopback-app` instance as argument 
+where you can find all the loopback app data, that includes the `app.models` object.
+
+You can find a example [here](examples/seeder-file.js)
+
+*./seeds/index.js*
+```
+module.exports = function (app, cb) {
+    let Travel = app.models.Travel
+
+    let promises = _.map(data, function (entry) {
+        let passengers = entry.passengers
+        delete entry.passengers
+
+        return Travel.create(entry)
+            .then((travel) => travel.passengers.create(passengers))
+    })
+
+    return Promise.all(promises) //Or you can use cb argument when all is done, but not both.
+}
+```
