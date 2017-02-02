@@ -61,8 +61,11 @@ var argv = _yargs2.default.usage("lb-migration <cmd> [args]").command('migrate [
         type: "string"
     }
 }, function (argv) {
-    return (0, _migrate2.default)(argv).catch(function (err) {
+    return (0, _migrate2.default)(argv).then(function () {
+        process.exit(0);
+    }).catch(function (err) {
         console.error(err);
+        process.exit(-1);
     });
 }).command('seed [--src]', 'Starts to seed your loopback application models', {
     s: {
@@ -80,8 +83,11 @@ var argv = _yargs2.default.usage("lb-migration <cmd> [args]").command('migrate [
         type: "string"
     }
 }, function (argv) {
-    return (0, _seeder2.default)(argv).catch(function (err) {
+    return (0, _seeder2.default)(argv).then(function () {
+        process.exit(0);
+    }).catch(function (err) {
         console.error(err);
+        process.exit(-1);
     });
 }).help().argv;
 //# sourceMappingURL=index.js.map

@@ -83,7 +83,7 @@ exports.default = function (argv) {
                 });
             });
 
-            return _bluebird2.default.all(promises);
+            return _bluebird2.default.all(promises).then(resolve).catch(reject);
         });
     });
 };

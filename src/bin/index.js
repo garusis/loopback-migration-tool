@@ -49,8 +49,12 @@ const argv = yargs
         }
     }, function (argv) {
         return migrate(argv)
+            .then(function () {
+                process.exit(0)
+            })
             .catch(function (err) {
                 console.error(err)
+                process.exit(-1)
             })
     })
     .command('seed [--src]', 'Starts to seed your loopback application models', {
@@ -70,8 +74,12 @@ const argv = yargs
         }
     }, function (argv) {
         return seeder(argv)
+            .then(function () {
+                process.exit(0)
+            })
             .catch(function (err) {
                 console.error(err)
+                process.exit(-1)
             })
     })
     .help()

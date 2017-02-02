@@ -75,6 +75,8 @@ export default function (argv) {
 
 
             return Promise.all(promises)
+                .then(resolve)
+                .catch(reject)
         })
     })
 }
