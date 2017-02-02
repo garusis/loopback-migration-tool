@@ -9,22 +9,25 @@ import path from "path"
 import debug from "debug"
 import {appLoader} from "./utils"
 
-export default function (argv) {
+export default async function (argv) {
     let app = appLoader(argv.app)
 
-    return new Promise(function (resolve, reject) {
+    let promises = _.map(app.models, (Model) => Model.destroyAll())
+    await Promise.all(promises)
+
+    return await new Promise(function (resolve, reject) {
         glob(argv.src, function (err, files) {
             if (err) return reject(err)
-            let promises = _.map(files, function (file) {
+            promises = _.map(files, function (file) {
                 if (!path.isAbsolute(file)) {
-                    file= `${process.cwd()}/${file}`
+                    file = `${process.cwd()}/${file}`
                 }
 
                 let seeder = require(file)
-                if(!_.isFunction(seeder) && seeder.default){
+                if (!_.isFunction(seeder) && seeder.default) {
                     seeder = seeder.default
                 }
-                if(seeder.length === 2){
+                if (seeder.length === 2) {
                     seeder = Promise.promisify(seeder)
                 }
                 return seeder(app)

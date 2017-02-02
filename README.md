@@ -86,7 +86,7 @@ You can use a `.lb-migrationrc.json` to save your common migration settings.
 
 ### seed
 
-**Important:** `seed` command will destroy all existing data in selected models before start to seed them.  
+**Important:** `seed` command will destroy all existing models' data calling to destroyAll method before start to seed them.  
 
 | Property 	|            Description            	|   Type        | Values 	|      Default     	|     As argument    	            |
 |:--------:	|:---------------------------------:	|:-----------:	|:------:	|:----------------:	|:-----------------------------:	|
