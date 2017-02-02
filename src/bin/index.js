@@ -4,7 +4,7 @@
  * Created by garusis on 31/01/17.
  */
 import yargs from "yargs"
-import defaults from "../defaults"
+import utils from "../utils"
 import migrate from "../migrate"
 import seeder from "../seeder"
 
@@ -14,28 +14,28 @@ const argv = yargs
         d: {
             demand: false,
             alias: ["ds", "datasource"],
-            default: defaults.ds,
+            default: utils.ds,
             describe: "Datasources that will be migrated. If empty or not present, all datasources will be migrates.",
             type: "array"
         },
         mod: {
             demand: false,
             alias: "model",
-            default: defaults.model,
+            default: utils.model,
             describe: "Models in the selected datasources that will be migrated. If empty or not present, all models in all selected datasources will be migrates. Selected Models not presents in selected datasources will be not migrated.",
             type: "array"
         },
         imod: {
             demand: false,
             alias: "ignored_model",
-            default: defaults.ignored_model,
+            default: utils.ignored_model,
             describe: "Models in the selected datasources that will be not migrated.",
             type: "array"
         },
         m: {
             demand: false,
             alias: "method",
-            default: defaults.method,
+            default: utils.method,
             choices: ["update", "migrate"],
             describe: "Loopback migration method to use. Loopback uses automigrate and autoupdate methods for migrations.",
             type: "string"
@@ -43,7 +43,7 @@ const argv = yargs
         a: {
             demand: false,
             alias: ["app", "loopback-app"],
-            default: defaults.app,
+            default: utils.app,
             describe: "Path to your loopback application main file.",
             type: "string"
         }
@@ -61,14 +61,14 @@ const argv = yargs
         s: {
             demand: false,
             alias: ["src", "sources"],
-            default: defaults.src,
+            default: utils.src,
             describe: "File globs to your seeders files.",
             type: "array"
         },
         a: {
             demand: false,
             alias: ["app", "loopback-app"],
-            default: defaults.app,
+            default: utils.app,
             describe: "Path to your loopback application main file.",
             type: "string"
         }

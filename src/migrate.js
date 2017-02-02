@@ -2,19 +2,12 @@
 /**
  * Created by garusis on 31/01/17.
  */
-import path from "path"
 import _ from "lodash"
 import Promise from "bluebird"
 import debug from "debug"
 
 
 export default function (argv) {
-    if (!path.isAbsolute(argv.app)) {
-        argv.app = `${process.cwd()}/${argv.app}`
-    }
-    let app = require(argv.app)
-    if (!app.loopback && app.default && app.default.loopback) //exported as a ES6 module.
-        app = app.default
 
     return new Promise(function (resolve, reject) {
         app.on('booted', function () {
