@@ -12,12 +12,7 @@ var _stringify = require("babel-runtime/core-js/json/stringify");
 var _stringify2 = _interopRequireDefault(_stringify);
 
 exports.default = function (argv) {
-    if (!_path2.default.isAbsolute(argv.app)) {
-        argv.app = process.cwd() + "/" + argv.app;
-    }
-    var app = require(argv.app);
-    if (!app.loopback && app.default && app.default.loopback) //exported as a ES6 module.
-        app = app.default;
+    var app = (0, _utils.appLoader)(argv.app);
 
     return new _bluebird2.default(function (resolve, reject) {
         app.on('booted', function () {
@@ -88,10 +83,6 @@ exports.default = function (argv) {
     });
 };
 
-var _path = require("path");
-
-var _path2 = _interopRequireDefault(_path);
-
 var _lodash = require("lodash");
 
 var _lodash2 = _interopRequireDefault(_lodash);
@@ -103,6 +94,8 @@ var _bluebird2 = _interopRequireDefault(_bluebird);
 var _debug = require("debug");
 
 var _debug2 = _interopRequireDefault(_debug);
+
+var _utils = require("./utils");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 //# sourceMappingURL=migrate.js.map

@@ -7,7 +7,5 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-exports.default = function (argv) {
-  console.log(argv);
-};
+exports.default = function (argv) {};
 //# sourceMappingURL=seeder.js.map
