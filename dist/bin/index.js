@@ -1,5 +1,9 @@
 #! /usr/bin/env node
+
 "use strict";
+/**
+ * Created by garusis on 31/01/17.
+ */
 
 var _yargs = require("yargs");
 
@@ -9,11 +13,16 @@ var _defaults = require("../defaults");
 
 var _defaults2 = _interopRequireDefault(_defaults);
 
+var _migrate = require("../migrate");
+
+var _migrate2 = _interopRequireDefault(_migrate);
+
+var _seeder = require("../seeder");
+
+var _seeder2 = _interopRequireDefault(_seeder);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/**
- * Created by garusis on 31/01/17.
- */
 var argv = _yargs2.default.usage("lb-migration <cmd> [args]").command('migrate [--method] [--ds] [--models]', 'Migrate models in datasources', {
     d: {
         demand: false,
@@ -27,6 +36,13 @@ var argv = _yargs2.default.usage("lb-migration <cmd> [args]").command('migrate [
         alias: "model",
         default: _defaults2.default.model,
         describe: "Models in the selected datasources that will be migrated. If empty or not present, all models in all selected datasources will be migrates. Selected Models not presents in selected datasources will be not migrated.",
+        type: "array"
+    },
+    imod: {
+        demand: false,
+        alias: "ignored_model",
+        default: _defaults2.default.ignored_model,
+        describe: "Models in the selected datasources that will be not migrated.",
         type: "array"
     },
     m: {
@@ -45,7 +61,9 @@ var argv = _yargs2.default.usage("lb-migration <cmd> [args]").command('migrate [
         type: "string"
     }
 }, function (argv) {
-    console.log('migrate', argv);
+    return (0, _migrate2.default)(argv).catch(function (err) {
+        console.error(err);
+    });
 }).command('seed [--src]', 'Starts to seed your loopback application models', {
     s: {
         demand: false,
@@ -62,6 +80,8 @@ var argv = _yargs2.default.usage("lb-migration <cmd> [args]").command('migrate [
         type: "string"
     }
 }, function (argv) {
-    console.log('seed', argv);
+    return (0, _seeder2.default)(argv).catch(function (err) {
+        console.error(err);
+    });
 }).help().argv;
 //# sourceMappingURL=index.js.map

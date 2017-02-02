@@ -1,9 +1,12 @@
 #! /usr/bin/env node
+"use strict"
 /**
  * Created by garusis on 31/01/17.
  */
 import yargs from "yargs"
 import defaults from "../defaults"
+import migrate from "../migrate"
+import seeder from "../seeder"
 
 const argv = yargs
     .usage("lb-migration <cmd> [args]")
@@ -22,6 +25,13 @@ const argv = yargs
             describe: "Models in the selected datasources that will be migrated. If empty or not present, all models in all selected datasources will be migrates. Selected Models not presents in selected datasources will be not migrated.",
             type: "array"
         },
+        imod: {
+            demand: false,
+            alias: "ignored_model",
+            default: defaults.ignored_model,
+            describe: "Models in the selected datasources that will be not migrated.",
+            type: "array"
+        },
         m: {
             demand: false,
             alias: "method",
@@ -38,7 +48,10 @@ const argv = yargs
             type: "string"
         }
     }, function (argv) {
-        console.log('migrate', argv)
+        return migrate(argv)
+            .catch(function (err) {
+                console.error(err)
+            })
     })
     .command('seed [--src]', 'Starts to seed your loopback application models', {
         s: {
@@ -56,7 +69,10 @@ const argv = yargs
             type: "string"
         }
     }, function (argv) {
-        console.log('seed', argv)
+        return seeder(argv)
+            .catch(function (err) {
+                console.error(err)
+            })
     })
     .help()
     .argv

@@ -10,6 +10,7 @@ const defaults = {
     ds: [],
     model: [],
     method: "migrate",
+    ignored_model: [],
     src: ["./seeds/*.js"],
     app: "./server/server.js"
 }
