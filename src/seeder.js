@@ -12,7 +12,7 @@ import {appLoader} from "./utils"
 export default async function (argv) {
     let app = appLoader(argv.app)
 
-    let promises = _.map(app.models, (Model) => Model.destroyAll())
+    let promises = _.map(app.models, (Model) => _.isFunction(Model.destroyAll) ? Model.destroyAll() : Promise.resolve())
     await Promise.all(promises)
 
     return await new Promise(function (resolve, reject) {
