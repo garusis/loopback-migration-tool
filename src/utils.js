@@ -19,7 +19,7 @@ const defs = {
 
 export let defaults = loadDefaults("./.lb-migrationrc.json")
 
-export function app(appPath) {
+export function appLoader(appPath) {
     if (!path.isAbsolute(appPath)) {
         appPath= `${process.cwd()}/${appPath}`
     }

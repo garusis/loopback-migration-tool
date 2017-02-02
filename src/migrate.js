@@ -5,9 +5,11 @@
 import _ from "lodash"
 import Promise from "bluebird"
 import debug from "debug"
+import {appLoader} from "./utils"
 
 
 export default function (argv) {
+    let app = appLoader(argv.app)
 
     return new Promise(function (resolve, reject) {
         app.on('booted', function () {
