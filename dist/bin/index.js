@@ -71,7 +71,7 @@ var argv = _yargs2.default.usage("lb-migration <cmd> [args]").command('migrate [
         alias: ["src", "sources"],
         default: _utils.defaults.src,
         describe: "File globs to your seeders files.",
-        type: "array"
+        type: "string"
     },
     a: {
         demand: false,

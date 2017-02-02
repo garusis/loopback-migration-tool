@@ -36,7 +36,7 @@ var defs = {
     model: [],
     method: "migrate",
     ignored_model: [],
-    src: ["./seeds/*.js"],
+    src: "./seeds/*.js",
     app: "./server/server.js"
 };var defaults = exports.defaults = loadDefaults("./.lb-migrationrc.json");
 

@@ -88,9 +88,9 @@ You can use a `.lb-migrationrc.json` to save your common migration settings.
 
 **Important:** `seed` command will destroy all existing data in selected models before start to seed them.  
 
-| Property 	|            Description            	|       Type       	        | Values 	|      Default     	|     As argument    	            |
-|:--------:	|:---------------------------------:	|:---------------------:	|:------:	|:----------------:	|:-----------------------------:	|
-|    src   	| File globs to your seeders files. 	| String, </br> [String] 	|        	| ["./seeds/*.js"] 	| -s </br> --src </br> --sources 	|
+| Property 	|            Description            	|   Type        | Values 	|      Default     	|     As argument    	            |
+|:--------:	|:---------------------------------:	|:-----------:	|:------:	|:----------------:	|:-----------------------------:	|
+|    src   	| File glob to your seeders files.  	|  String 	    |        	|  "./seeds/*.js" 	| -s </br> --src </br> --sources 	|
 
 ## Seeder file
 

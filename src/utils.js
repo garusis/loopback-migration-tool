@@ -13,7 +13,7 @@ const defs = {
     model: [],
     method: "migrate",
     ignored_model: [],
-    src: ["./seeds/*.js"],
+    src: "./seeds/*.js",
     app: "./server/server.js"
 }
 
@@ -37,4 +37,3 @@ function loadDefaults(rcPath) {
     newDefaults = _.defaults(newDefaults, defs)
     return newDefaults
 }
-

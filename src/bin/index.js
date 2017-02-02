@@ -63,7 +63,7 @@ const argv = yargs
             alias: ["src", "sources"],
             default: defaults.src,
             describe: "File globs to your seeders files.",
-            type: "array"
+            type: "string"
         },
         a: {
             demand: false,
