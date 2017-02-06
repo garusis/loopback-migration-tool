@@ -6,6 +6,15 @@
   "repository": "git@github.com:garusis/loopback-migration-tool.git",
   "author": "Marcos J. Alvarez <garusis@gmail.com>",
   "license": "MIT",
+  "keywords": [
+    "loopback",
+    "loopback.io",
+    "migration",
+    "seed",
+    "tool",
+    "util",
+    "cli"
+  ],
   "scripts": {
     "build": "gulp build && git commit --amend --no-edit",
     "preversion": "yarn run build",

@@ -48,7 +48,7 @@ exports.default = function () {
                     case 0:
                         app = (0, _utils.appLoader)(argv.app);
                         promises = _lodash2.default.map(app.models, function (Model) {
-                            return Model.destroyAll();
+                            return _lodash2.default.isFunction(Model.destroyAll) ? Model.destroyAll() : _bluebird2.default.resolve();
                         });
                         _context.next = 4;
                         return _bluebird2.default.all(promises);
