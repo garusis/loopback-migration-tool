@@ -7,9 +7,6 @@ module.exports = {
         }
     },
     "rules": {
-        "semi": [
-            "error",
-            "never"
-        ]
+        "semi": [2, "never"]
     }
 }
