@@ -16,7 +16,7 @@
     "cli"
   ],
   "scripts": {
-    "build": "gulp build && git commit --amend --no-edit",
+    "build": "gulp build && git add -A && git commit --amend --no-edit",
     "preversion": "yarn run build",
     "git-push": "git push origin master --force && git push --follow-tags",
     "release": "npm publish && yarn run git-push",
