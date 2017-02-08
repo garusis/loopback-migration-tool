@@ -90,27 +90,31 @@ exports.default = function () {
                         return _bluebird2.default.all(promises);
 
                     case 4:
-                        files = _bluebird2.default.promisify(_glob2.default)(argv.src);
+                        _context.next = 6;
+                        return _bluebird2.default.promisify(_glob2.default)(argv.src);
+
+                    case 6:
+                        files = _context.sent;
 
                         files = files.sort();
 
                         i = 0, j = files.length;
 
-                    case 7:
+                    case 9:
                         if (!(i < j)) {
-                            _context.next = 13;
+                            _context.next = 15;
                             break;
                         }
 
-                        _context.next = 10;
+                        _context.next = 12;
                         return runSeedFile(app, files[i]);
 
-                    case 10:
+                    case 12:
                         i++;
-                        _context.next = 7;
+                        _context.next = 9;
                         break;
 
-                    case 13:
+                    case 15:
                     case "end":
                         return _context.stop();
                 }

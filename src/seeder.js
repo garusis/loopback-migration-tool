@@ -15,7 +15,7 @@ export default async function (argv) {
     let promises = _.map(app.models, (Model) => _.isFunction(Model.destroyAll) ? Model.destroyAll() : Promise.resolve())
     await Promise.all(promises)
 
-    let files = Promise.promisify(glob)(argv.src)
+    let files = await Promise.promisify(glob)(argv.src)
     files = files.sort()
 
     for (let i = 0, j = files.length; i < j; i++) {
