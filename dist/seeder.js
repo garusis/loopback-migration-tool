@@ -29,16 +29,17 @@ var runSeedFile = function () {
 
                         seeder = require(file);
 
+                        console.log(seeder);
                         if (!_lodash2.default.isFunction(seeder) && seeder.default) {
                             seeder = seeder.default;
                         }
                         if (seeder.length === 2) {
                             seeder = _bluebird2.default.promisify(seeder);
                         }
-                        _context2.next = 7;
+                        _context2.next = 8;
                         return seeder(app);
 
-                    case 7:
+                    case 8:
                     case "end":
                         return _context2.stop();
                 }

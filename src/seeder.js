@@ -30,6 +30,7 @@ async function runSeedFile(app, file) {
     }
 
     let seeder = require(file)
+    console.log(seeder)
     if (!_.isFunction(seeder) && seeder.default) {
         seeder = seeder.default
     }
