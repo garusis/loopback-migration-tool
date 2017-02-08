@@ -19,7 +19,13 @@ var _seeder = require("../seeder");
 
 var _seeder2 = _interopRequireDefault(_seeder);
 
+var _debugHelper = require("debug-helper");
+
+var _debugHelper2 = _interopRequireDefault(_debugHelper);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_debugHelper2.default.config({ appNamespace: "lb-migration" });
 
 var argv = _yargs2.default.usage("lb-migration <cmd> [args]").command('migrate [--method] [--ds] [--models]', 'Migrate models in datasources', {
     d: {
@@ -59,10 +65,13 @@ var argv = _yargs2.default.usage("lb-migration <cmd> [args]").command('migrate [
         type: "string"
     }
 }, function (argv) {
+    _debugHelper2.default.debug.info("Starting migrate");
     return (0, _migrate2.default)(argv).then(function () {
+        _debugHelper2.default.debug.info("Migrations have ended");
         process.exit(0);
     }).catch(function (err) {
-        console.error(err);
+        _debugHelper2.default.debug.error("An Error has occurred while migrating");
+        _debugHelper2.default.debug.error(err);
         process.exit(-1);
     });
 }).command('seed [--src]', 'Starts to seed your loopback application models', {
@@ -81,10 +90,13 @@ var argv = _yargs2.default.usage("lb-migration <cmd> [args]").command('migrate [
         type: "string"
     }
 }, function (argv) {
+    _debugHelper2.default.debug.info("Starting model's seed");
     return (0, _seeder2.default)(argv).then(function () {
+        _debugHelper2.default.debug.info("Model's seed have ended");
         process.exit(0);
     }).catch(function (err) {
-        console.error(err);
+        _debugHelper2.default.debug.error("An Error has occurred while seeding");
+        _debugHelper2.default.debug.error(err);
         process.exit(-1);
     });
 }).help().argv;

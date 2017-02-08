@@ -7,6 +7,10 @@ import yargs from "yargs"
 import {defaults} from "../utils"
 import migrate from "../migrate"
 import seeder from "../seeder"
+import dh from "debug-helper"
+
+dh.config({appNamespace:"lb-migration"})
+
 
 const argv = yargs
     .usage("lb-migration <cmd> [args]")
@@ -48,12 +52,15 @@ const argv = yargs
             type: "string"
         }
     }, function (argv) {
+        dh.debug.info("Starting migrate")
         return migrate(argv)
             .then(function () {
+                dh.debug.info("Migrations have ended")
                 process.exit(0)
             })
             .catch(function (err) {
-                console.error(err)
+                dh.debug.error("An Error has occurred while migrating")
+                dh.debug.error(err)
                 process.exit(-1)
             })
     })
@@ -73,12 +80,15 @@ const argv = yargs
             type: "string"
         }
     }, function (argv) {
+        dh.debug.info("Starting model's seed")
         return seeder(argv)
             .then(function () {
+                dh.debug.info("Model's seed have ended")
                 process.exit(0)
             })
             .catch(function (err) {
-                console.error(err)
+                dh.debug.error("An Error has occurred while seeding")
+                dh.debug.error(err)
                 process.exit(-1)
             })
     })

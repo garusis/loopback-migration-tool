@@ -4,7 +4,7 @@
  */
 import _ from "lodash"
 import Promise from "bluebird"
-import debug from "debug"
+import dh from "debug-helper"
 import {appLoader} from "./utils"
 
 
@@ -59,12 +59,12 @@ export default function (argv) {
                 let migrateMethod = isUpdateMethod ? ds.autoupdate : ds.automigrate
                 if (!migrateMethod) return Promise.resolve()
 
-                console.log(`---------------Start to migrate the ${ds.settings.name} datasource with ${argv.method} method`)
-                console.log(`Models to migrate ${JSON.stringify(modelNames)}`)
+                dh.debug.info(`Starting ${ds.settings.name} datasource's migration with ${argv.method} method`)
+                dh.debug.info(`Models to migrate ${JSON.stringify(modelNames)}`)
                 migrateMethod = Promise.promisify(migrateMethod, {context: ds})
                 return migrateMethod(modelNames)
                     .then(function () {
-                        console.log(`---------------${ds.settings.name} datasource migration finished.`)
+                        dh.debug.info(`${ds.settings.name} datasource migration have finished.`)
                     })
             })
 

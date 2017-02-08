@@ -6,7 +6,7 @@ import _ from "lodash"
 import glob from "glob"
 import Promise from "bluebird"
 import path from "path"
-import debug from "debug"
+import dh from "debug-helper"
 import {appLoader} from "./utils"
 
 export default async function (argv) {
@@ -15,26 +15,26 @@ export default async function (argv) {
     let promises = _.map(app.models, (Model) => _.isFunction(Model.destroyAll) ? Model.destroyAll() : Promise.resolve())
     await Promise.all(promises)
 
-    return await new Promise(function (resolve, reject) {
-        glob(argv.src, function (err, files) {
-            if (err) return reject(err)
-            promises = _.chain(files).sort().map(function (file) {
-                if (!path.isAbsolute(file)) {
-                    file = `${process.cwd()}/${file}`
-                }
+    let files = Promise.promisify(glob)(argv.src)
+    files = files.sort()
 
-                let seeder = require(file)
-                if (!_.isFunction(seeder) && seeder.default) {
-                    seeder = seeder.default
-                }
-                if (seeder.length === 2) {
-                    seeder = Promise.promisify(seeder)
-                }
-                return seeder(app)
-            }).value()
-            Promise.all(promises)
-                .then(resolve)
-                .catch(reject)
-        })
-    })
+    for (let i = 0, j = files.length; i < j; i++) {
+        await runSeedFile(app, files[i])
+    }
+}
+
+async function runSeedFile(app, file) {
+    dh.debug.info(`Runing ${file} seed file`)
+    if (!path.isAbsolute(file)) {
+        file = `${process.cwd()}/${file}`
+    }
+
+    let seeder = require(file)
+    if (!_.isFunction(seeder) && seeder.default) {
+        seeder = seeder.default
+    }
+    if (seeder.length === 2) {
+        seeder = Promise.promisify(seeder)
+    }
+    await seeder(app)
 }

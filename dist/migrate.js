@@ -70,11 +70,11 @@ exports.default = function (argv) {
                 var migrateMethod = isUpdateMethod ? ds.autoupdate : ds.automigrate;
                 if (!migrateMethod) return _bluebird2.default.resolve();
 
-                console.log("---------------Start to migrate the " + ds.settings.name + " datasource with " + argv.method + " method");
-                console.log("Models to migrate " + (0, _stringify2.default)(modelNames));
+                _debugHelper2.default.debug.info("Starting " + ds.settings.name + " datasource's migration with " + argv.method + " method");
+                _debugHelper2.default.debug.info("Models to migrate " + (0, _stringify2.default)(modelNames));
                 migrateMethod = _bluebird2.default.promisify(migrateMethod, { context: ds });
                 return migrateMethod(modelNames).then(function () {
-                    console.log("---------------" + ds.settings.name + " datasource migration finished.");
+                    _debugHelper2.default.debug.info(ds.settings.name + " datasource migration have finished.");
                 });
             });
 
@@ -91,9 +91,9 @@ var _bluebird = require("bluebird");
 
 var _bluebird2 = _interopRequireDefault(_bluebird);
 
-var _debug = require("debug");
+var _debugHelper = require("debug-helper");
 
-var _debug2 = _interopRequireDefault(_debug);
+var _debugHelper2 = _interopRequireDefault(_debugHelper);
 
 var _utils = require("./utils");
 
