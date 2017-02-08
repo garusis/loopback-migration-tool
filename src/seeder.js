@@ -18,7 +18,7 @@ export default async function (argv) {
     return await new Promise(function (resolve, reject) {
         glob(argv.src, function (err, files) {
             if (err) return reject(err)
-            promises = _.map(files, function (file) {
+            promises = _.chain(files).sort().map(function (file) {
                 if (!path.isAbsolute(file)) {
                     file = `${process.cwd()}/${file}`
                 }
@@ -31,7 +31,7 @@ export default async function (argv) {
                     seeder = Promise.promisify(seeder)
                 }
                 return seeder(app)
-            })
+            }).value()
             Promise.all(promises)
                 .then(resolve)
                 .catch(reject)

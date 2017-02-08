@@ -58,7 +58,7 @@ exports.default = function () {
                         return new _bluebird2.default(function (resolve, reject) {
                             (0, _glob2.default)(argv.src, function (err, files) {
                                 if (err) return reject(err);
-                                promises = _lodash2.default.map(files, function (file) {
+                                promises = _lodash2.default.chain(files).sort().map(function (file) {
                                     if (!_path2.default.isAbsolute(file)) {
                                         file = process.cwd() + "/" + file;
                                     }
@@ -71,7 +71,7 @@ exports.default = function () {
                                         seeder = _bluebird2.default.promisify(seeder);
                                     }
                                     return seeder(app);
-                                });
+                                }).value();
                                 _bluebird2.default.all(promises).then(resolve).catch(reject);
                             });
                         });

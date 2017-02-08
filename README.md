@@ -95,7 +95,7 @@ You can use a `.lb-migrationrc.json` to save your common migration settings.
 ## Seeder file
 
 A seeder file is just a js module that exports a function where you 
-fill your model's data.
+fill your model's data. Seeder files are executed in lexicographic order.
 
 The exported function receive a `loopback-app` instance as argument 
 where you can find all the loopback app data, that includes the `app.models` object.
