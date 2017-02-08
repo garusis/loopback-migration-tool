@@ -871,9 +871,9 @@ debug-fabulous@0.0.X:
     lazy-debug-legacy "0.0.X"
     object-assign "4.1.0"
 
-debug-helper@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/debug-helper/-/debug-helper-2.0.0.tgz#54b7a94a1353fb3962a8ab6ec8e7140ed345466e"
+debug-helper@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/debug-helper/-/debug-helper-2.0.1.tgz#8722565c5080d5c9721111d51b713780b8ea8810"
   dependencies:
     babel-runtime "^6.22.0"
     lodash "^4.17.4"
