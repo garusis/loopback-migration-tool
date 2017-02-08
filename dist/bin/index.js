@@ -25,7 +25,7 @@ var _debugHelper2 = _interopRequireDefault(_debugHelper);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_debugHelper2.default.config({ appNamespace: "lb-migration" });
+_debugHelper2.default.config({ appNamespace: "lb-migration", force: true });
 
 var argv = _yargs2.default.usage("lb-migration <cmd> [args]").command('migrate [--method] [--ds] [--models]', 'Migrate models in datasources', {
     d: {

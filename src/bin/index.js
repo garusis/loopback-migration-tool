@@ -9,7 +9,7 @@ import migrate from "../migrate"
 import seeder from "../seeder"
 import dh from "debug-helper"
 
-dh.config({appNamespace:"lb-migration"})
+dh.config({appNamespace: "lb-migration", force: true})
 
 
 const argv = yargs
