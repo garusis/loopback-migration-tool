@@ -29,17 +29,16 @@ var runSeedFile = function () {
 
                         seeder = require(file);
 
-                        console.log(seeder);
                         if (!_lodash2.default.isFunction(seeder) && seeder.default) {
                             seeder = seeder.default;
                         }
                         if (seeder.length === 2) {
                             seeder = _bluebird2.default.promisify(seeder);
                         }
-                        _context2.next = 8;
+                        _context2.next = 7;
                         return seeder(app);
 
-                    case 8:
+                    case 7:
                     case "end":
                         return _context2.stop();
                 }
@@ -85,7 +84,11 @@ exports.default = function () {
                     case 0:
                         app = (0, _utils.appLoader)(argv.app);
                         promises = _lodash2.default.map(app.models, function (Model) {
-                            return _lodash2.default.isFunction(Model.destroyAll) ? Model.destroyAll() : _bluebird2.default.resolve();
+                            if (Model.dataSource && _lodash2.default.isFunction(Model.destroyAll)) {
+                                console.log(Model);
+                                return Model.destroyAll();
+                            }
+                            return _bluebird2.default.resolve();
                         });
                         _context.next = 4;
                         return _bluebird2.default.all(promises);

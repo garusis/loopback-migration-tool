@@ -12,7 +12,13 @@ import {appLoader} from "./utils"
 export default async function (argv) {
     let app = appLoader(argv.app)
 
-    let promises = _.map(app.models, (Model) => _.isFunction(Model.destroyAll) ? Model.destroyAll() : Promise.resolve())
+    let promises = _.map(app.models, function (Model) {
+        if (Model.dataSource && _.isFunction(Model.destroyAll)) {
+            console.log(Model)
+            return Model.destroyAll()
+        }
+        return Promise.resolve()
+    })
     await Promise.all(promises)
 
     let files = await Promise.promisify(glob)(argv.src)
@@ -30,7 +36,6 @@ async function runSeedFile(app, file) {
     }
 
     let seeder = require(file)
-    console.log(seeder)
     if (!_.isFunction(seeder) && seeder.default) {
         seeder = seeder.default
     }
