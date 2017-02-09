@@ -14,7 +14,6 @@ export default async function (argv) {
 
     let promises = _.map(app.models, function (Model) {
         if (Model.dataSource && _.isFunction(Model.destroyAll)) {
-            console.log(Model)
             return Model.destroyAll()
         }
         return Promise.resolve()
